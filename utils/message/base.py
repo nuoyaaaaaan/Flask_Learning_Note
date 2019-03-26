@@ -7,3 +7,8 @@ Create on 19-3-25
 @requirements: PyCharm 2017.2.4, Python 3.6
 '''
 
+
+class Base(object):
+
+    def send(self, msg):
+        raise NotImplementedError('...')
