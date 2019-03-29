@@ -18,8 +18,9 @@ app.debug = True
 # def index():
 #     return 'hello world'
 
+
 def user_auth(fun):
-    @functools.wraps(fun)
+    @functools.wraps(fun)  # 保证装饰器不改变原函数的名称
     def inner(*args, **kwargs):
         user = session.get('user_info')
         if not user:
@@ -29,10 +30,11 @@ def user_auth(fun):
             return fun(*args, **kwargs)
     return inner
 
+
 USER = {
     1: {'name': '贺宗星', 'age': 18, 'gender': '男', 'text': '111111111111'},
     2: {'name': '张黎', 'age': 18, 'gender': '女', 'text': '2222222222222'},
-    3: {'name': '张秀蕊', 'age': 18, 'gender': '女', 'text':'33333333333'}
+    3: {'name': '张秀蕊', 'age': 18, 'gender': '女', 'text': '33333333333'}
 }
 
 
