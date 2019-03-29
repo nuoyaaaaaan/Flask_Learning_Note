@@ -20,7 +20,7 @@ app.debug = True
 
 
 def user_auth(fun):
-    # @functools.wraps(fun)  # 路由系统不指定endpoint时保证装饰器不改变原函数的名称
+    # @functools.wraps(fun)  # 路由系统不指定endpoint时保证装饰器不改变原函数的名称，设置函数元信息
     def inner(*args, **kwargs):
         user = session.get('user_info')
         if not user:
