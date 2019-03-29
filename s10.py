@@ -12,7 +12,7 @@ app.debug = True
 
 
 def func1(arg):
-    return Markup("<input type='text' value='%s' />" %(arg,))
+    return Markup("<input type='text' value='%s' />" % (arg,))
 
 @app.route('/')
 def index():
