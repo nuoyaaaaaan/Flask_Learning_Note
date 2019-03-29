@@ -20,7 +20,7 @@ app.debug = True
 
 
 def user_auth(fun):
-    @functools.wraps(fun)  # 保证装饰器不改变原函数的名称
+    # @functools.wraps(fun)  # 路由系统不指定endpoint时保证装饰器不改变原函数的名称
     def inner(*args, **kwargs):
         user = session.get('user_info')
         if not user:
@@ -38,7 +38,7 @@ USER = {
 }
 
 
-@app.route('/index', methods=['GET'])
+@app.route('/index', methods=['GET'], endpoint='n1')
 @user_auth
 def index():
     # user = session.get('user_info')
@@ -49,7 +49,7 @@ def index():
     return render_template('index.html', user_dict=USER)
 
 
-@app.route('/detail/<int:nid>', methods=['GET'])
+@app.route('/detail/<int:nid>', methods=['GET'], endpoint='n2')
 @user_auth
 def detail(nid):
     # user = session.get('user_info')
